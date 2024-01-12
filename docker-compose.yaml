@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  clickhouse-server:
+    image: clickhouse/clickhouse-server
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    environment:
+      - CLICKHOUSE_DB=some_db_dev
+    volumes:
+      - ./out/clickhouse:/var/lib/clickhouse
+      - ./init_clickhouse:/docker-entrypoint-initdb.d
